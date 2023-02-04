@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
-  before_action :set_restaurant
+  before_action :set_restaurant, only: [:new, :create]
 
   def show
+    @review = Review.find(params[:id])
   end
 
   def new
@@ -16,6 +17,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    @review = Review.find(params[:id])
     @review.destroy
     redirect_to restaurant_path(@review.restaurant), status: :see_other
   end
