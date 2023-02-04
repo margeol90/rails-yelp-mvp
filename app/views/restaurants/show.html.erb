@@ -1,0 +1,17 @@
+<div class="container">
+    <h1><%= @restaurant.name %></h1>
+      <b>Address</b>: <%= @restaurant.address%>
+      <b>Category</b>: <%= @restaurant.category.capitalize%>
+      <p><strong>Reviews</strong></p>
+      <ul class="list-group">
+        <% @restaurant.reviews.each do |review| %>
+          <li class="list-group-item"><%= link_to review.content, review_path %></li>
+        <% end %>
+      </ul>
+      <br>
+    <div class="card-body">
+      <button type="button" class="btn btn-secondary m-1"><%= link_to "Back to restaurants", restaurants_path%></button>
+      <button type="button" class="btn btn-success m-1"><%= link_to "Add review", new_restaurant_review_path(@restaurant)%></button>
+    </div>
+  </div>
+</div>
